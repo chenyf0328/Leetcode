@@ -1,0 +1,1 @@
+ArrayList 就是一个可以不固定长度的array, 所以insert()和访问操作都是O(1)的，但是remove() 和array一样需要将所有元素往前移动。

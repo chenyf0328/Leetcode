@@ -1,0 +1,9 @@
+二维数组的克隆问题：
+要用这样的方法克隆
+boolean[][] visitedTemp = new boolean[board.length][board[0].length];
+for(int n = 0;n < visited.length;n++){
+	visitedTemp[n] = visited[n].clone();
+}
+
+如果直接二维数组.clone()的话，里面的一维数组还是指向原数组，所以还是会跟着一起改变
+https://blog.csdn.net/qq_37232304/article/details/79950022					

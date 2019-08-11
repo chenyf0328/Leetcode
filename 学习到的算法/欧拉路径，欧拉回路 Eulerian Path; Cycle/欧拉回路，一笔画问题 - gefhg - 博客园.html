@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>欧拉回路，一笔画问题 - gefhg - 博客园</title>
+    <meta property="og:description" content="本来打算写证明的，果然还是太菜orz 欧拉回路就是给一个图，存在一条回路把所边经过且每条边只经过一次。 对于无向图： 存在欧拉回路的条件：每个点的度都为偶数； 存在欧拉路的条件：有且只有两个点的度为一">
+    <link type="text/css" rel="stylesheet" href="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-MoonlightInk.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/bundle-MoonlightInk-mobile.css">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/abc1604831024/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/abc1604831024/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/abc1604831024/wlwmanifest.xml">
+    <script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/osd.js"></script><script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/amp4ads-host-v0.js"></script><script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/pubads_impl_rendering_2019053001.js"></script><script async="" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/analytics.js"></script><script type="text/javascript" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/encoder.js"></script><script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery-2.js"></script>
+    <script>var currentBlogId=425091;var currentBlogApp='abc1604831024',cb_enable_mathjax=false;var isLogined=false;</script>
+    <script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/blog-common.js" type="text/javascript"></script>
+<link rel="preload" href="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/integrator.js" as="script"><script type="text/javascript" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/integrator.js"></script><script src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/pubads_impl_2019053001.js" async=""></script><link rel="prefetch" href="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/container.html"></head>
+<body>
+<a name="top"></a>
+
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="https://www.cnblogs.com/abc1604831024/"><img id="blogLogo" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="https://www.cnblogs.com/abc1604831024/">gefhg</a></h1>
+<h2>......</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/abc1604831024/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li><a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/gefhg">联系</a></li>
+<li><a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/abc1604831024/rss">订阅</a>
+<!--<a id="blog_nav_rss_image" class="aHeaderXML" href="https://www.cnblogs.com/abc1604831024/rss"><img src="//www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			<div id="blog_stats">
+<span id="stats_post_count">随笔 - 5&nbsp; </span>
+<span id="stats_article_count">文章 - 0&nbsp; </span>
+<span id="stats-comment_count">评论 - 0</span>
+</div>
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+        <div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/abc1604831024/p/9077112.html">欧拉回路，一笔画问题</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>本来打算写证明的，果然还是太菜orz</p>
+<p>欧拉回路就是给一个图，存在一条回路把所边经过且每条边只经过一次。</p>
+<p>对于无向图：</p>
+<p>　　存在欧拉回路的条件：每个点的度都为偶数；</p>
+<p>　　存在欧拉路的条件：有且只有两个点的度为一，且这两个点分别为起点和终点；</p>
+<p>对于有向图：</p>
+<p>　　存在欧拉回路的条件：每个点出度等于入度；</p>
+<p>　　存在欧拉路的条件：存在一个点出度比入度多一作为起点，存在一点入度比出度多一作为终点，其余点出度等于入度；</p>
+<p>求欧拉回路的方法——基本（套圆）法</p>
+<p>　　dfs搜索，不能再往下走便回溯，回溯时记录路径，回溯时不清除对边的标记，最后求出来的路径就是欧拉回路。</p>
+<p><img style="float: left;" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1371833-20180531202149454-303310105.png" alt="" width="206" height="131"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>（1）走&lt;1,2&gt;,&lt;2,3&gt;,&lt;3,4&gt;,&lt;4,5&gt;,&lt;5,1&gt;,然后无路可走，就回溯记录下回溯路径&lt;1,5&gt;,&lt;5,4&gt;,4点有其它路壳走。</p>
+<p>（2）&lt;4,8&gt;,&lt;8,3&gt;,&lt;3,6&gt;,&lt;6,7&gt;,&lt;7,2&gt;，&lt;2,4&gt;,
+无路可走，然后回
+溯&lt;1,5&gt;,&lt;5,4&gt;,&lt;4,2&gt;,&lt;2,7&gt;,&lt;7,6&gt;,&lt;6,3&gt;,&lt;3,8&gt;,&lt;8,4&gt;,&lt;4,3&gt;,&lt;3,2&gt;,&lt;2,1&gt;。</p>
+<p>记录下的路
+径&lt;1,5&gt;,&lt;5,4&gt;,&lt;4,2&gt;,&lt;2,7&gt;,&lt;7,6&gt;,&lt;6,3&gt;,&lt;3,8&gt;,&lt;8,4&gt;,&lt;4,3&gt;,&lt;3,2&gt;,&lt;2,1&gt;
+便是一条欧拉回路。</p>
+<div class="cnblogs_code" onclick="cnblogs_code_show('14340055-3e32-4867-bd11-ced255f5be1d')"><img id="code_img_closed_14340055-3e32-4867-bd11-ced255f5be1d" class="code_img_closed" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ContractedBlock.gif" alt=""><img id="code_img_opened_14340055-3e32-4867-bd11-ced255f5be1d" class="code_img_opened" style="display: none;" onclick="cnblogs_code_hide('14340055-3e32-4867-bd11-ced255f5be1d',event)" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ExpandedBlockStart.gif" alt="">
+<div id="cnblogs_code_open_14340055-3e32-4867-bd11-ced255f5be1d" class="cnblogs_code_hide">
+<pre>#include &lt;iostream&gt;<span style="color: #000000;">
+#include </span>&lt;vector&gt;
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span><span style="color: #000000;"> std;
+vector </span>&lt;<span style="color: #0000ff;">int</span> &gt; aa[<span style="color: #800080;">155</span><span style="color: #000000;">];
+</span><span style="color: #0000ff;">int</span> bb[<span style="color: #800080;">155</span>][<span style="color: #800080;">155</span>],ee[<span style="color: #800080;">155</span><span style="color: #000000;">];
+vector </span>&lt;<span style="color: #0000ff;">int</span> &gt;<span style="color: #000000;"> cc;
+</span><span style="color: #0000ff;">int</span> dd[<span style="color: #800080;">11</span>][<span style="color: #800080;">2</span>]=<span style="color: #000000;">{
+{</span><span style="color: #800080;">1</span>,<span style="color: #800080;">2</span>},{<span style="color: #800080;">1</span>,<span style="color: #800080;">5</span>},{<span style="color: #800080;">2</span>,<span style="color: #800080;">4</span>},{<span style="color: #800080;">2</span>,<span style="color: #800080;">3</span>},{<span style="color: #800080;">2</span>,<span style="color: #800080;">7</span>},{<span style="color: #800080;">4</span>,<span style="color: #800080;">5</span>},{<span style="color: #800080;">4</span>,<span style="color: #800080;">8</span>},{<span style="color: #800080;">4</span>,<span style="color: #800080;">3</span>},{<span style="color: #800080;">8</span>,<span style="color: #800080;">3</span>},{<span style="color: #800080;">3</span>,<span style="color: #800080;">6</span>},{<span style="color: #800080;">6</span>,<span style="color: #800080;">7</span><span style="color: #000000;">}};
+</span><span style="color: #0000ff;">void</span> bfs (<span style="color: #0000ff;">int</span><span style="color: #000000;"> t)
+{
+    </span><span style="color: #0000ff;">for</span> (vector &lt;<span style="color: #0000ff;">int</span> &gt; ::iterator i=aa[t].begin();i!=aa[t].end();i++<span style="color: #000000;">)
+    {
+        </span><span style="color: #0000ff;">if</span> (!bb[*i][t]) <span style="color: #0000ff;">continue</span><span style="color: #000000;">;
+        bb[</span>*i][t]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+        bb[t][</span>*i]=<span style="color: #800080;">0</span><span style="color: #000000;">;
+        bfs (</span>*<span style="color: #000000;">i);
+    }
+    cc.push_back(t);
+}
+</span><span style="color: #0000ff;">int</span><span style="color: #000000;"> main ()
+{
+    </span><span style="color: #0000ff;">int</span> n=<span style="color: #800080;">8</span>,m=<span style="color: #800080;">11</span><span style="color: #000000;">;
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i=<span style="color: #800080;">0</span>;i&lt;n;i++<span style="color: #000000;">)
+    {
+        aa[i].clear();
+        ee[i]</span>=<span style="color: #800080;">0</span><span style="color: #000000;">;
+    }
+    </span><span style="color: #0000ff;">for</span> (<span style="color: #0000ff;">int</span> i=<span style="color: #800080;">0</span>;i&lt;m;i++<span style="color: #000000;">)
+    {
+        aa[dd[i][</span><span style="color: #800080;">0</span>]].push_back(dd[i][<span style="color: #800080;">1</span><span style="color: #000000;">]);
+        aa[dd[i][</span><span style="color: #800080;">1</span>]].push_back(dd[i][<span style="color: #800080;">0</span><span style="color: #000000;">]);
+        bb[dd[i][</span><span style="color: #800080;">1</span>]][dd[i][<span style="color: #800080;">0</span>]]=<span style="color: #800080;">1</span><span style="color: #000000;">;
+        bb[dd[i][</span><span style="color: #800080;">0</span>]][dd[i][<span style="color: #800080;">1</span>]]=<span style="color: #800080;">1</span><span style="color: #000000;">;
+    }
+    bfs(</span><span style="color: #800080;">1</span><span style="color: #000000;">);
+    </span><span style="color: #0000ff;">for</span> (vector &lt;<span style="color: #0000ff;">int</span> &gt;::iterator i=cc.begin();i!=cc.end();i++<span style="color: #000000;">)
+        cout </span>&lt;&lt;*i&lt;&lt;<span style="color: #800000;">"</span> <span style="color: #800000;">"</span><span style="color: #000000;">;
+    cout </span>&lt;&lt;<span style="color: #000000;">endl;
+}</span></pre>
+</div>
+<span class="cnblogs_code_collapse">View Code</span></div>
+<p>运行结果：</p>
+<p><img src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/1371833-20180701181228267-567578793.png" alt=""></p>
+<p>。。。。。。。。</p>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9077112,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('083c71f1-ab28-4db3-c495-08d5866282ce');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/abc1604831024/" target="_blank"><img src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/20180409185002.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/abc1604831024/">gefhg</a><br>
+            <a href="https://home.cnblogs.com/u/abc1604831024/followees">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/abc1604831024/followers">粉丝 - 0</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow('083c71f1-ab28-4db3-c495-08d5866282ce');return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(9077112,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(9077112,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/abc1604831024/p/8907896.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/abc1604831024/p/8907896.html" title="发布于2018-04-22 16:22">HDU 4857 逃生</a><br><a href="https://www.cnblogs.com/abc1604831024/p/9251160.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/abc1604831024/p/9251160.html" title="发布于2018-07-01 20:22">最小生成树</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2018-07-01 18:14</span> <a href="https://www.cnblogs.com/abc1604831024/">gefhg</a> 阅读(<span id="post_view_count">861</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=9077112" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(9077112);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=425091,cb_entryId=9077112,cb_blogApp=currentBlogApp,cb_blogUserGuid='083c71f1-ab28-4db3-c495-08d5866282ce',cb_entryCreatedDate='2018/7/1 18:14:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=false;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga('send', 'event', 'Link', 'click', 'T2-工控')">【推荐】超50万C++/C#源码: 大型实时仿真组态图形源码</a><br><a href="https://www.grapecity.com.cn/developer/spreadjs?utm_source=cnblogs&amp;utm_medium=blogpage&amp;utm_term=bottom&amp;utm_content=SpreadJS&amp;utm_campaign=community" target="_blank" onclick="ga('send', 'event', 'Link', 'click', 'T2-SpreadJS')">【前端】SpreadJS表格控件，可嵌入系统开发的在线Excel</a><br><a href="https://q.cnblogs.com/" target="_blank" onclick="ga('send', 'event', 'Link', 'click', 'T2-博问')">【推荐】程序员问答平台，解决您开发中遇到的技术难题</a><br></div>
+<div id="opt_under_post"></div>
+<script async="async" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/gpt.js"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+<script>
+  googletag.cmd.push(function() {
+        googletag.defineSlot('/1090369/C1', [300, 250], 'div-gpt-ad-1546353474406-0').addService(googletag.pubads());
+        googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c1" class="c_ad_block">
+    <div id="div-gpt-ad-1546353474406-0" style="height:250px; width:300px;" data-google-query-id="CO2NkeW12OICFSjJ4QodewsIYw"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" scrolling="no" marginwidth="0" marginheight="0" style="border: 0px none; vertical-align: bottom;" srcdoc="" data-google-container-id="1" data-load-complete="true" width="300" height="250" frameborder="0"></iframe></div></div>
+</div>
+<div id="under_post_news"><div class="recomm-block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/sssy/p/6682871.html" target="_blank" onclick="clickRecomItmem(6682871)">欧拉回路与欧拉路  之  一笔画问题</a><br>·  <a href="https://www.cnblogs.com/cjoieryl/p/8663584.html" target="_blank" onclick="clickRecomItmem(8663584)">欧拉回路与欧拉路径</a><br>·  <a href="https://www.cnblogs.com/lyqlyq/p/6683118.html" target="_blank" onclick="clickRecomItmem(6683118)">一笔画问题</a><br>·  <a href="https://www.cnblogs.com/dillydally/p/9567806.html" target="_blank" onclick="clickRecomItmem(9567806)">欧拉回路</a><br>·  <a href="https://www.cnblogs.com/Ash-ly/p/5397702.html" target="_blank" onclick="clickRecomItmem(5397702)">欧拉图 欧拉回路 欧拉通路 Euler</a><br></div></div>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="COXakuW12OICFSjJ4QodewsIYw"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none; display: inline-block; width: 468px; height: 60px;"><iframe style="border: 0px none; vertical-align: bottom;" src="%E6%AC%A7%E6%8B%89%E5%9B%9E%E8%B7%AF%EF%BC%8C%E4%B8%80%E7%AC%94%E7%94%BB%E9%97%AE%E9%A2%98%20-%20gefhg%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/container.html" id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="" scrolling="no" marginwidth="0" marginheight="0" data-is-safeframe="true" data-google-container-id="2" data-load-complete="true" width="468" height="60" frameborder="0"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/626541/" target="_blank">雷军晒小米手环4：更加绚丽的16000色屏幕</a><br> ·  <a href="https://news.cnblogs.com/n/626540/" target="_blank">Facebook正阻止华为预先安装其应用程序</a><br> ·  <a href="https://news.cnblogs.com/n/626538/" target="_blank">火星大气中有个大洞？正把大量水排入太空</a><br> ·  <a href="https://news.cnblogs.com/n/626539/" target="_blank">中医首次被WHO纳入《国际疾病分类》</a><br> ·  <a href="https://news.cnblogs.com/n/626537/" target="_blank">科学家观测到星系团的连接方式</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+ if(enablePostBottom()) {
+    codeHighlight();
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverT2();
+    deliverC1();
+    deliverC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);  
+}
+</script>
+</div>
+
+    
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/abc1604831024/">gefhg</a><br>园龄：<a href="https://home.cnblogs.com/u/abc1604831024/" title="入园时间：2018-04-09">1年1个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/abc1604831024/followers/">0</a><br>关注：<a href="https://home.cnblogs.com/u/abc1604831024/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow('083c71f1-ab28-4db3-c495-08d5866282ce')">+加关注</a></div><script>getFollowStatus('083c71f1-ab28-4db3-c495-08d5866282ce')</script></div></div><script type="text/javascript">loadBlogNews();</script>
+</div>
+
+			<div id="blog-calendar" style=""><table id="blogCalendar" class="Cal" title="Calendar" cellspacing="0" cellpadding="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:void(0);" onclick="loadBlogCalendar('2019/05/01');return false;">&lt;</a></td><td align="center">2019年6月</td><td class="CalNextPrev" align="right"><a href="javascript:void(0);" onclick="loadBlogCalendar('2019/07/01');return false;">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">26</td><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td class="CalWeekendDay" align="center">1</td></tr><tr><td class="CalWeekendDay" align="center">2</td><td align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">7</td><td class="CalTodayDay" align="center">8</td></tr><tr><td class="CalWeekendDay" align="center">9</td><td align="center">10</td><td align="center">11</td><td align="center">12</td><td align="center">13</td><td align="center">14</td><td class="CalWeekendDay" align="center">15</td></tr><tr><td class="CalWeekendDay" align="center">16</td><td align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td class="CalWeekendDay" align="center">22</td></tr><tr><td class="CalWeekendDay" align="center">23</td><td align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td class="CalWeekendDay" align="center">29</td></tr><tr><td class="CalWeekendDay" align="center">30</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td></tr>
+</tbody></table></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/abc1604831024/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/abc1604831024/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/abc1604831024/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/abc1604831024/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/abc1604831024/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+<div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="CatList_LinkList_0_Link_0" href="https://www.cnblogs.com/abc1604831024/archive/2018/07.html">2018年7月 (2)</a> </li>
+
+<li><a id="CatList_LinkList_0_Link_1" href="https://www.cnblogs.com/abc1604831024/archive/2018/04.html">2018年4月 (3)</a> </li>
+
+</ul>
+
+</div>
+
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap" style="display: none;">
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div id="RecentCommentsBlock"></div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/abc1604831024/p/9077112.html">1. 欧拉回路，一笔画问题(861)</a></li><li><a href="https://www.cnblogs.com/abc1604831024/p/8907805.html">2. 链式向前星(254)</a></li><li><a href="https://www.cnblogs.com/abc1604831024/p/8889077.html">3. CodeForces 964 D Destruction of a Tree(59)</a></li><li><a href="https://www.cnblogs.com/abc1604831024/p/9251160.html">4. 最小生成树(19)</a></li><li><a href="https://www.cnblogs.com/abc1604831024/p/8907896.html">5. HDU 4857 逃生(18)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap" style="display: none;">
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"></div>
+</div>
+</div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap" style="display: none;">
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2019 gefhg
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+
+<iframe id="google_osd_static_frame_8911276701220" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe></body></html>
